@@ -57,7 +57,7 @@ const updateTaskSchema = z.object({
     due: z.date().min(new Date(), "Due date must be after today"),
 });
 
-export function EditTaskDialog({ taskId }: { taskId: string }) {
+export function EditTaskDialog({ taskId, disabled }: { taskId: string, disabled: boolean }) {
     const [createTask, { isLoading }] = useUpdateTaskMutation();
     const [deleteTask] = useDeleteTaskMutation();
     const [open, setOpen] = React.useState(false);
@@ -85,7 +85,7 @@ export function EditTaskDialog({ taskId }: { taskId: string }) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline">Edit</Button>
+                <Button variant="outline" disabled={disabled}>Edit</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

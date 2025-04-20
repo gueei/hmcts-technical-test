@@ -54,6 +54,7 @@ export function AddNewTaskDialog() {
 
     async function onSubmit(data: ICreateTask) {
         await createTask(data).unwrap();
+        form.reset();
         setOpen(false);
     }
 
