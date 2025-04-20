@@ -76,6 +76,8 @@ export function DateTimePicker(
             mode="single"
             selected={date}
             onSelect={handleDateSelect}
+            defaultMonth={date}
+            disabled={{ before: new Date() }}
             initialFocus
           />
           <div className="flex flex-col sm:flex-row sm:h-[300px] divide-y sm:divide-y-0 sm:divide-x">

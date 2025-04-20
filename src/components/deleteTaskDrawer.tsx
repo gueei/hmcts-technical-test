@@ -24,7 +24,7 @@ export const DeleteTaskDrawer = ({disabled, onClick}: {disabled: boolean, onClic
             </DrawerHeader>
             <DrawerFooter>
                 <Button className="w-48" variant="destructive" onClick={onClick}>YES</Button>
-                <DrawerClose>
+                <DrawerClose asChild>
                     <Button variant="link">Not now</Button>
                 </DrawerClose>
             </DrawerFooter>
