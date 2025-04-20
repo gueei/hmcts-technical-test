@@ -1,7 +1,7 @@
 # DTS Developer Technical Test
 
 ## Live Demo
-[Live Demo Site](https://hmcts-technical-test-git-main-andy-tsuis-projects.vercel.app/)
+[Live Demo Site](https://hmcts-technical-test.vercel.app/)
 
 ## To Run Locally
 1. `yarn install`
