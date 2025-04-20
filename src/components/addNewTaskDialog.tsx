@@ -37,7 +37,7 @@ import { format } from "date-fns"
 import { useNewTaskMutation } from "@/lib/client/services";
 import { createTaskSchema, ICreateTask } from "@/models/taskModels";
 import {add} from "date-fns";
-import { DateTimePicker } from "./ui/dateTimicker";
+import { DateTimePicker } from "./ui/dateTimePicker";
 
 export function AddNewTaskDialog() {
 
@@ -46,6 +46,8 @@ export function AddNewTaskDialog() {
     const form = useForm({
         resolver: zodResolver(createTaskSchema),
         defaultValues: {
+            title: "",
+            description: "",
             due: add(new Date(), {days: 1})
         }
     });
@@ -102,7 +104,7 @@ export function AddNewTaskDialog() {
                                     <FormControl>
                                         <DateTimePicker
                                             className="col-span-3"
-                                            date={field.value}
+                                            date={field.value?? ""}
                                             onChange={field.onChange}
                                             dtFormat="PPP hh:mm aa"
                                         />

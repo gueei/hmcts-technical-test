@@ -45,7 +45,9 @@ import { useForm } from "react-hook-form";
 import { format } from "date-fns"
 import { useGetTaskByIdQuery, useUpdateTaskMutation, useDeleteTaskMutation } from "@/lib/client/services";
 import { Status } from "@/models/taskModels";
-import { DateTimePicker } from "./ui/dateTimicker";
+import { DateTimePicker } from "./ui/dateTimePicker";
+import { toast } from "sonner";
+import { DeleteTaskDrawer } from "./deleteTaskDrawer";
 
 const updateTaskSchema = z.object({
     id: z.string(),
@@ -91,6 +93,7 @@ export function EditTaskDialog({ taskId }: { taskId: string }) {
                     <DialogDescription>
                     </DialogDescription>
                 </DialogHeader>
+
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 py-4">
                         <FormField control={form.control}
@@ -148,7 +151,7 @@ export function EditTaskDialog({ taskId }: { taskId: string }) {
                                     <FormControl>
                                         <DateTimePicker
                                             className="col-span-3"
-                                            date={field.value}
+                                            date={field.value ?? ""}
                                             onChange={field.onChange}
                                             dtFormat="PPP hh:mm aa"
                                         />
@@ -157,7 +160,7 @@ export function EditTaskDialog({ taskId }: { taskId: string }) {
                                 </FormItem>
                             )} />
                         <div className="grid grid-cols-4 gap-4">
-                            <Button onClick={handleDelete} className="col-span-1" type="button" variant="destructive" disabled={isLoading || loadingTask}>Delete</Button>
+                            <DeleteTaskDrawer onClick={handleDelete} disabled={isLoading||loadingTask}/>
                             <Button className="col-span-3" type="submit" disabled={isLoading || loadingTask || !form.formState.isDirty}>Save changes</Button>
                         </div>
                     </form>
