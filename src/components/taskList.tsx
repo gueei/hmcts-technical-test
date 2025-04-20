@@ -38,9 +38,9 @@ export function TaskList() {
         )
 
     return (
-        <div className="flex flex-row w-full flex-wrap gap-2">
+        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-stretch">
             {tasks?.map((task: ITask) => (
-                <Card className="sm:w-1/2 md:w-1/4 lg:w-1/5" key={task.id}>
+                <Card className="" key={task.id}>
                     <CardHeader>
                         <CardTitle>{task.title}</CardTitle>
                         <CardDescription>{format(task.due, "PPP mm:hh aa")}</CardDescription>
@@ -48,8 +48,10 @@ export function TaskList() {
                     <CardContent className="flex flex-col gap-2">
                         <Label>{task.description}</Label>
                         <div className="flex flex-row gap-2">
-                            <Switch id={`toggle-task-complete_${task.id}`} disabled={taskUpdating || updatingList} onCheckedChange={(checked) => handleTaskComplete(task, checked)} />
-                            <Label htmlFor={`toggle-task-complete_${task.id}`}>Completed</Label>
+                            <Switch id={`toggle-task-complete_${task.id}`}
+                                checked={task.status === Status.DONE}
+                                disabled={taskUpdating || updatingList} onCheckedChange={(checked) => handleTaskComplete(task, checked)} />
+                            <Label htmlFor={`toggle-task-complete_${task.id}`}>Done</Label>
                         </div>
                     </CardContent>
                     <CardFooter>

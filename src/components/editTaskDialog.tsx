@@ -124,7 +124,7 @@ export function EditTaskDialog({ taskId, disabled }: { taskId: string, disabled:
                             name="status"
                             render={({ field }) => (
                                 <FormItem className="grid grid-cols-4 items-center gap-4">
-                                    <FormLabel className="col-span-1">Status {JSON.stringify(field.value)}</FormLabel>
+                                    <FormLabel className="col-span-1">Status</FormLabel>
                                     <FormControl className="col-span-3">
                                         <Select onValueChange={field.onChange} value={field.value ?? ""} disabled={loadingTask}>
                                             <FormControl>

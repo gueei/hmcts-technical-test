@@ -11,7 +11,7 @@ export const apiErrorMiddleware: Middleware =
     if (isRejectedWithValue(action)) {
       console.warn("API call failed: ", JSON.stringify(action.error));
       toast("Something went wrong", {
-        description: action.error.message,
+        description: action.error.name,
         action: {
             label: "OK",
             onClick: ()=>{}
